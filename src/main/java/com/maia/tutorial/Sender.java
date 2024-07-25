@@ -1,14 +1,11 @@
 package com.maia.tutorial;
 
-import io.smallrye.reactive.messaging.kafka.KafkaMessage;
-import io.smallrye.reactive.messaging.kafka.OutgoingKafkaRecord;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.reactive.messaging.Message;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Flow;
 import java.util.concurrent.LinkedBlockingQueue;
 
 @ApplicationScoped
@@ -16,7 +13,7 @@ public class Sender {
 
     private static final System.Logger LOGGER = System.getLogger(Sender.class.getName());
 
-    private BlockingQueue<String> messages = new LinkedBlockingQueue<>();
+    private final BlockingQueue<String> messages = new LinkedBlockingQueue<>();
 
     public void add(String message) {
         messages.add(message);
