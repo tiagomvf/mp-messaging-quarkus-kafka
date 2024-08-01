@@ -2,6 +2,22 @@ version:  '3.2'
 
 services:
 
+  sender:
+    build:
+      context: sender
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - 8080:8080
+    networks:
+      - microprofile
+
+  receiver:
+    build:
+      context: receiver
+      dockerfile: src/main/docker/Dockerfile.jvm
+    networks:
+      - microprofile
+
   zookeeper:
     image: "confluent/zookeeper"
     networks:
